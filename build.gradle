@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+
+    }
+}
+
+
+plugins {
+    id 'java'
+}
+group 'seleniumlearn'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+compileJava.options.encoding = 'utf-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    testCompile
+}
+
+sourceCompatibility = 11
+
+repositories {
+        mavenCentral()
+}
+
+dependencies {
+    //implementation 'org.testng:testng:7.1.0'
+    //testCompile 'com.codeborne:selenide:5.15.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.2'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.1.2'
+
+    testImplementation group: 'org.testng', name: 'testng', version: '7.3.0'
+}
+
+task testNG(type: Test) {
+    //jvmArgs '-Dselenide.browser=Chrome'
+    jvmArgs "-Dtestng.dtd.http=true"
+    useTestNG {
+        suites 'src/test/resources/testng.xml'
+    }
+    reports.html.destination = file("$buildDir/reports/testng")
+    //systemProperty 'selenide.savePageSource', 'false'
+    //systemProperty 'selenide.fastSetValue', 'false'
+    //systemProperty 'selenide.headless', 'false'
+    //systemProperty 'selenide.timeout', '7000'
+    testLogging {
+        exceptionFormat = 'full'
+        showStackTraces = "true"
+    }
+}
+tasks.withType(Test) {
+    scanForTestClasses = true
+    include "**/*Test.class" // whatever Ant pattern matches your test class files
+}
