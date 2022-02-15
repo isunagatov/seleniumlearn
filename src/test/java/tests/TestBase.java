@@ -7,6 +7,10 @@ import org.testng.annotations.*;
 
 public class TestBase {
     public static WebDriver driver;
+    public static String LITECARTLOGINUSER = "i.sunagatov@ya.ru";
+    public static String LITECARTPASSUSER = "admin";
+    public static String LITECARTLOGINADMIN = "admin";
+    public static String LITECARTPASSADMIN = "admin";
     @BeforeMethod
     public void startDriver() {
         System.setProperty("webdriver.chrome.driver", getClass().getClassLoader().getResource("chromedriver98.exe")
