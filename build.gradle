@@ -34,7 +34,7 @@ repositories {
 
 dependencies {
     //implementation 'org.testng:testng:7.1.0'
-    //testCompile 'com.codeborne:selenide:5.15.0'
+    testCompile 'com.codeborne:selenide:5.15.0'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.2'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.1.2'
 
@@ -51,7 +51,23 @@ task testNG(type: Test) {
     //systemProperty 'selenide.savePageSource', 'false'
     //systemProperty 'selenide.fastSetValue', 'false'
     //systemProperty 'selenide.headless', 'false'
-    //systemProperty 'selenide.timeout', '7000'
+    systemProperty 'selenide.timeout', '7000'
+    testLogging {
+        exceptionFormat = 'full'
+        showStackTraces = "true"
+    }
+}
+task testNGff(type: Test) {
+    jvmArgs '-Dselenide.browser=FireFox'
+    jvmArgs "-Dtestng.dtd.http=true"
+    useTestNG {
+        suites 'src/test/resources/testng.xml'
+    }
+    reports.html.destination = file("$buildDir/reports/testng")
+    systemProperty 'selenide.savePageSource', 'false'
+    systemProperty 'selenide.fastSetValue', 'false'
+    systemProperty 'selenide.headless', 'false'
+    systemProperty 'selenide.timeout', '7000'
     testLogging {
         exceptionFormat = 'full'
         showStackTraces = "true"
