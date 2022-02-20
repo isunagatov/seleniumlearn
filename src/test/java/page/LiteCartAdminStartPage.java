@@ -10,4 +10,12 @@ public class LiteCartAdminStartPage extends TestBase {
     public static WebElement loginButton = driver.findElement(By.cssSelector("#box-login > form > div.footer > button"));
 
 
+    public static void loginToAdmin(){
+        driver.get("http://localhost:8081/litecart/admin/");
+        userNameField.sendKeys(LITECARTLOGINADMIN);
+        passwordField.sendKeys(LITECARTPASSADMIN);
+        loginButton.click();
+    }
+
+
 }

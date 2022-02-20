@@ -12,7 +12,7 @@ public class FirstTest extends TestBase {
         GooglePage.submitButton.submit();
     }
     @Test(enabled = false)
-    public void task3LoginToStore() {
+    public static void task3LoginToStore() {
         driver.get("http://localhost:8081/litecart/");
         LiteCartStartPage.emailAddressField.sendKeys(LITECARTLOGINUSER);
         LiteCartStartPage.passField.sendKeys(LITECARTPASSUSER);
