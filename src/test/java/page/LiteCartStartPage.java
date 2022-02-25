@@ -11,7 +11,6 @@ public class LiteCartStartPage extends TestBase {
     public static WebElement loginButton = driver.findElement(By.cssSelector("#box-account-login > div > form > table > tbody > tr:nth-child(4) > td > span > button:nth-child(1)"));
 
     public static void loginToStore() {
-        driver.get("http://localhost:8081/litecart/");
         emailAddressField.sendKeys(LITECARTLOGINUSER);
         passField.sendKeys(LITECARTPASSUSER);
         loginButton.click();

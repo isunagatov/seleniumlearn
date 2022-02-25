@@ -15,4 +15,10 @@ public class LiteCartAdminFirstPage extends TestBase {
         WebElement h2 = liteCartAdminFirstPage.h1;
         return h2;
     }
+    public void loginAdminApplication (){
+        driver.get("http://localhost:8081/litecart/admin/");
+        LiteCartAdminStartPage.userNameField.sendKeys(LITECARTLOGINADMIN);
+        LiteCartAdminStartPage.passwordField.sendKeys(LITECARTPASSADMIN);
+        LiteCartAdminStartPage.loginButton.click();
+    }
 }
