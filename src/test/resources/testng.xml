@@ -4,6 +4,8 @@
     <test name="Tests">
         <classes>
             <class name="tests.FirstTest"/>
+            <class name="tests.Task6Test"/>
+            <class name="tests.Task7Test"/>
         </classes>
     </test>
 </suite>

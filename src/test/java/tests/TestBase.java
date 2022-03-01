@@ -16,7 +16,7 @@ public class TestBase {
         //System.setProperty("webdriver.chrome.driver", getClass().getClassLoader().getResource("chromedriver98.exe")
         //        .getPath().replace("/", "\\").substring(1).concat("\\"));
 
-        System.setProperty("webdriver.chrome.driver","C:\\SeleniumWebDriver\\chromedriver98.exe");
+        //System.setProperty("webdriver.chrome.driver","C:\\SeleniumWebDriver\\chromedriver98.exe");
         driver = new ChromeDriver();
 
         //driver = getWebDriver();
