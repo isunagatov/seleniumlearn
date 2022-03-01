@@ -12,8 +12,8 @@ import java.util.List;
 
 public class Task7Test extends TestBase {
     public SoftAssert sa = new SoftAssert();
-    @Test
-    public void task7 () {
+    @Test (enabled = false)
+    public void task7var1 () {
         driver.get("http://localhost:8081/litecart/");
         LiteCartStartPage.loginToStore();
         //List<WebElement> listContent = LiteCartStorePage.contents;
@@ -30,16 +30,6 @@ public class Task7Test extends TestBase {
         // Либо я не понял что нужно из задания, сделаю по другому:
         //Товар однозначно идентифицировать нельзя. Добавил проверку на "product column shadow hover-light", но смысла не вижу.
         // ПОлучилась та же самая проверка, но кода больше
-/*        for(WebElement menuCurrent:listContent){
-            itemList = menuCurrent.findElements(By.cssSelector("li"));
-            //itemList = menuCurrent.findElements(By.cssSelector("#box-most-popular > div > ul > li:nth-child(1)"));
-            for(WebElement itemCurrent:itemList){
-                listSticker = itemCurrent.findElements(By.className("sticker"));
-
-                sa.assertEquals(listSticker.size(),1);
-                //System.out.println("text sticker:" + listSticker.get(0).getText());
-            }
-        }*/
 
         List<WebElement> listItemMostPopular = LiteCartStorePage.mostPopular;
         checkSticker(listItemMostPopular);
@@ -47,7 +37,6 @@ public class Task7Test extends TestBase {
         checkSticker(listItemCampaigns);
         List<WebElement> listItemLatestProducts = LiteCartStorePage.latestProducts;
         checkSticker(listItemLatestProducts);
-
         sa.assertAll();
     }
     public void checkSticker ( List<WebElement> listContent){
@@ -58,13 +47,56 @@ public class Task7Test extends TestBase {
 
             if (itemCurrent.getAttribute("Class").contains("product column shadow hover-light")==true){
                 listSticker = itemCurrent.findElements(By.className("sticker"));
-
                 sa.assertEquals(listSticker.size(),1);
             }
-            /* for(WebElement itemCurrent:itemList){
-             */
-            //System.out.println("text sticker:" + listSticker.get(0).getText());
-            /* }*/
         }
     }
+
+    @Test(enabled = false)
+    public void task7oldVar () {
+        driver.get("http://localhost:8081/litecart/");
+        LiteCartStartPage.loginToStore();
+        List<WebElement> listContent = LiteCartStorePage.contents;
+        List<WebElement> itemList;
+        List<WebElement> listSticker;
+        for(WebElement menuCurrent:listContent){
+            itemList = menuCurrent.findElements(By.cssSelector("li"));
+            itemList = menuCurrent.findElements(By.cssSelector("#box-most-popular > div > ul > li:nth-child(1)"));
+            for(WebElement itemCurrent:itemList){
+                listSticker = itemCurrent.findElements(By.className("sticker"));
+                sa.assertEquals(listSticker.size(),1);
+                //System.out.println("text sticker:" + listSticker.get(0).getText());
+            }
+        }
+        sa.assertAll();
+    }
+    @Test
+    public void task7Var2 () {
+        driver.get("http://localhost:8081/litecart/");
+        LiteCartStartPage.loginToStore();
+        List<WebElement> listItems;
+        List<WebElement> listSticker;
+        WebElement itemList;
+
+        listItems = LiteCartStorePage.mostPopular;
+        for (int i=1; i<= listItems.size(); ++i) {
+            itemList = driver.findElement(By.cssSelector("#box-most-popular > div > ul > li:nth-child(" + i + ")"));
+            listSticker = itemList.findElements(By.className("sticker"));
+            sa.assertEquals(listSticker.size(),1);
+        }
+        listItems = LiteCartStorePage.campaigns;
+        for (int i=1; i<= listItems.size(); ++i) {
+            itemList = driver.findElement(By.cssSelector("#box-campaigns > div > ul > li:nth-child(" + i + ")"));
+            listSticker = itemList.findElements(By.className("sticker"));
+            sa.assertEquals(listSticker.size(),1);
+        }
+        listItems = LiteCartStorePage.latestProducts;
+        for (int i=1; i<= listItems.size(); ++i) {
+            itemList = driver.findElement(By.cssSelector("#box-campaigns > div > ul > li:nth-child(" + i + ")"));
+            listSticker = itemList.findElements(By.className("sticker"));
+            sa.assertEquals(listSticker.size(),1);
+        }
+        sa.assertAll();
+    }
+
 }
