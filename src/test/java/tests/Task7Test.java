@@ -51,7 +51,6 @@ public class Task7Test extends TestBase {
             }
         }
     }
-
     @Test(enabled = false)
     public void task7oldVar () {
         driver.get("http://localhost:8081/litecart/");
@@ -61,7 +60,7 @@ public class Task7Test extends TestBase {
         List<WebElement> listSticker;
         for(WebElement menuCurrent:listContent){
             itemList = menuCurrent.findElements(By.cssSelector("li"));
-            itemList = menuCurrent.findElements(By.cssSelector("#box-most-popular > div > ul > li:nth-child(1)"));
+            //itemList = menuCurrent.findElements(By.cssSelector("#box-most-popular > div > ul > li:nth-child(1)"));
             for(WebElement itemCurrent:itemList){
                 listSticker = itemCurrent.findElements(By.className("sticker"));
                 sa.assertEquals(listSticker.size(),1);
@@ -70,7 +69,7 @@ public class Task7Test extends TestBase {
         }
         sa.assertAll();
     }
-    @Test
+    @Test(enabled = false)
     public void task7Var2 () {
         driver.get("http://localhost:8081/litecart/");
         LiteCartStartPage.loginToStore();
@@ -99,4 +98,22 @@ public class Task7Test extends TestBase {
         sa.assertAll();
     }
 
+    @Test(enabled = true)
+    public void task7oldVar3 () {
+        //Теперь понял, спасибо!
+        driver.get("http://localhost:8081/litecart/");
+        LiteCartStartPage.loginToStore();
+        List<WebElement> listContent = LiteCartStorePage.contents;
+        List<WebElement> itemList;
+        List<WebElement> listSticker;
+        for(WebElement menuCurrent:listContent){
+            itemList = menuCurrent.findElements(By.className("product"));
+            for(WebElement itemCurrent:itemList){
+                listSticker = itemCurrent.findElements(By.className("sticker"));
+                sa.assertEquals(listSticker.size(),1);
+                //System.out.println("text sticker:" + listSticker.get(0).getText());
+            }
+        }
+        sa.assertAll();
+    }
 }
