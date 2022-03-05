@@ -30,4 +30,19 @@ public class Task7Test extends TestBase {
         }
         sa.assertAll();
     }
+
+    @Test(enabled = true)
+    public void task7newVar4 () {
+        driver.get("http://localhost:8081/litecart/");
+        LiteCartStartPage.loginToStore();
+        List<WebElement> listSticker;
+        List<WebElement> productList = driver.findElements(By.className("product"));
+
+        for(WebElement itemCurrent:productList){
+                listSticker = itemCurrent.findElements(By.className("sticker"));
+                sa.assertEquals(listSticker.size(),1);
+                //System.out.println("text sticker:" + listSticker.get(0).getText());
+        }
+        sa.assertAll();
+    }
 }
