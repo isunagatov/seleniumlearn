@@ -8,7 +8,7 @@ import page.LiteCartAdminStartPage;
 
 import java.util.*;
 
-public class Task8Task extends TestBase {
+public class Task8Test extends TestBase {
     public SoftAssert sa = new SoftAssert();
     @Test
     public void test8() {
