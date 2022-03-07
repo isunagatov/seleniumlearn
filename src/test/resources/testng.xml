@@ -6,6 +6,8 @@
             <class name="tests.FirstTest"/>
             <class name="tests.Task6Test"/>
             <class name="tests.Task7Test"/>
+            <class name="tests.Task8Test"/>
+            <class name="tests.Task9Test"/>
         </classes>
     </test>
 </suite>
