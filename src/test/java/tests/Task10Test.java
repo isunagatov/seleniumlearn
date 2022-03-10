@@ -46,20 +46,9 @@ public class Task10Test {
         driver.manage().window().setSize(new Dimension(1920,1080));
         task10();
     }
-    public void login() {
-        WebElement emailAddressField = driver.findElement(By.cssSelector("#box-account-login > div > form > table > tbody > tr:nth-child(1) > td > input[type=text]"));
-        WebElement passField = driver.findElement(By
-                .cssSelector("#box-account-login > div > form > table > tbody > tr:nth-child(2) > td > input[type=password]"));
-        WebElement loginButton = driver.findElement(By.cssSelector("#box-account-login > div > form > table > tbody > tr:nth-child(4) > td > span > button:nth-child(1)"));
-
-        emailAddressField.sendKeys(LITECARTLOGINUSER);
-        passField.sendKeys(LITECARTPASSUSER);
-        loginButton.click();
-    }
 
     public void task10 (){
         driver.get("http://localhost:8081/litecart/");
-        login();
         List<WebElement> listContent = driver.findElement(By.cssSelector("#main > div.middle > div.content")).findElements(By.className("box"));;
         List<WebElement> compaingsProduct = listContent.get(1).findElements(By.className("product"));
 
