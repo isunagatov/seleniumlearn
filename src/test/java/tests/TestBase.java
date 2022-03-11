@@ -13,12 +13,7 @@ public class TestBase {
     public static String LITECARTPASSADMIN = "admin";
     @BeforeMethod
     public void startDriver() {
-        //System.setProperty("webdriver.chrome.driver", getClass().getClassLoader().getResource("chromedriver98.exe")
-        //        .getPath().replace("/", "\\").substring(1).concat("\\"));
-
-        //System.setProperty("webdriver.chrome.driver","C:\\SeleniumWebDriver\\chromedriver98.exe");
         driver = new ChromeDriver();
-
         //driver = getWebDriver();
         driver.manage().window().setSize(new Dimension(1920,1080));
 
