@@ -34,11 +34,12 @@ public class Task11Test extends TestBase{
         driver.findElement(By.name("confirmed_password")).sendKeys("12345");
 
         driver.findElement(By.name("create_account")).click();
+
         driver.findElement(By.cssSelector("#box-account > div > ul > li:nth-child(4) > a")).click();
         driver.findElement(By.name("email")).sendKeys(email);
         driver.findElement(By.name("password")).sendKeys("12345");
         driver.findElement(By.name("login")).click();
 
-        WebElement checkOut = driver.findElement(By.cssSelector("#cart > a.link"));
+        driver.findElement(By.cssSelector("#box-account > div > ul > li:nth-child(4) > a")).click();
     }
 }
