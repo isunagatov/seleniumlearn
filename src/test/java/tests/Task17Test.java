@@ -96,6 +96,7 @@ public class Task17Test {
         for (int i = 0; i < productListSize; i++) {
             driver.findElements(By.xpath("//*[@id=\"content\"]/form/table/tbody/tr[*]/td[3]/a")).get(i).click();
             pressButton("Cancel");
+            driver.manage().logs().get("browser").forEach(l -> System.out.println(l));
         }
     }
     public void pressButton(String buttonName){

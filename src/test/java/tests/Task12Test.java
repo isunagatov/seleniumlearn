@@ -28,8 +28,12 @@ public class Task12Test extends TestBase {
             driver.findElement(By.cssSelector("label:nth-child(3) > input[type=radio]")).click();
             driver.findElement(By.name("name[en]")).sendKeys(nameProduct);
             driver.findElement(By.name("code")).sendKeys("12345");
+
+            //driver.findElements(By.cssSelector("input[name=\"categories[]\"]")).get(0).click();
             driver.findElement(By.cssSelector("#tab-general > table > tbody > tr:nth-child(4) > td > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > input[type=checkbox]")).click();
+
             driver.findElement(By.cssSelector("#tab-general > table > tbody > tr:nth-child(4) > td > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=checkbox]")).click();
+
             driver.findElement(By.cssSelector("#tab-general > table > tbody > tr:nth-child(7) > td > div > table > tbody > tr:nth-child(4) > td:nth-child(1) > input[type=checkbox]")).click();
 
             driver.findElement(By.name("quantity")).clear();
