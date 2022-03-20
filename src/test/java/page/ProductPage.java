@@ -12,8 +12,6 @@ import static tests.TestBase.driver;
 
 public class ProductPage extends TestBase{
 
-    public static List<WebElement> listSizeOfProduct = driver.findElements(
-            cssSelector("#box-product > div.content > div.information > div.buy_now > form > table > tbody > tr:nth-child(1) > td > select"));
     public static WebElement getWebElementSizeOfProduct() {
         try {
             WebElement sizeOfProduct = driver.findElement(
@@ -22,8 +20,6 @@ public class ProductPage extends TestBase{
         }catch (Exception e){        }
         return null;
     }
-
-
     public static WebElement getSmallSize(){
         try {
             return getWebElementSizeOfProduct().findElement(cssSelector("tr:nth-child(1) > td > select > option:nth-child(2)"));
@@ -31,9 +27,16 @@ public class ProductPage extends TestBase{
             return null;
         }
     }
-    public WebElement addToCartButton = driver.findElement(By.name("add_cart_product"));
     public static WebElement getAddToCartButton() {
         return (new ProductPage()).addToCartButton;
     }
+
+    public static List<WebElement> getListSizeOfProduct () {
+        return new ProductPage().listSizeOfProduct;
+    }
+    public List<WebElement> listSizeOfProduct = driver.findElements(
+            cssSelector("#box-product > div.content > div.information > div.buy_now > form > table > tbody > tr:nth-child(1) > td > select"));
+
+    public WebElement addToCartButton = driver.findElement(By.name("add_cart_product"));
 
 }
